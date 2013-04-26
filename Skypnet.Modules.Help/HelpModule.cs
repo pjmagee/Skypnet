@@ -43,7 +43,7 @@ namespace Skypnet.Modules.Help
 
         private void SkypeOnMessageStatus(ChatMessage pMessage, TChatMessageStatus status)
         {
-            if (status == TChatMessageStatus.cmsSent)
+            if (status == TChatMessageStatus.cmsSent || status == TChatMessageStatus.cmsReceived)
             {
                 string[] messageArray = pMessage.Body.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
 

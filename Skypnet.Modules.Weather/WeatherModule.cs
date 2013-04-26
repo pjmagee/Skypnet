@@ -35,6 +35,9 @@ namespace Skypnet.Modules.Weather
         [Inject]
         public SkypeContainer SkypeContainer { get; set; }
 
+        [Inject]
+        public IWeatherProvider WeatherProvider { get; set; }
+
         private const string RegexPattern = @"^!(w|fc)\s+(.*)";
 
         private static readonly Regex WeatherRegex = new Regex(RegexPattern, RegexOptions.Compiled);
@@ -46,16 +49,14 @@ namespace Skypnet.Modules.Weather
 
         private void SkypeOnMessageStatus(ChatMessage pMessage, TChatMessageStatus status)
         {
-            if (status == TChatMessageStatus.cmsSent)
+            if (status == TChatMessageStatus.cmsSent || status == TChatMessageStatus.cmsReceived)
             {
                 Match match = WeatherRegex.Match(pMessage.Body);
                 
                 if (match.Success)
                 {
-                    string command = match.Groups[1].Value;
-                    string location = match.Groups[2].Value;
-
-                    // TODO: Implement the weather service
+                    string weather = WeatherProvider.GetWeather(pMessage.Body);
+                    pMessage.Chat.SendMessage(weather);
                 }
             }
         }

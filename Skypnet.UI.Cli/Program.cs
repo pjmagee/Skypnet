@@ -7,6 +7,7 @@ using Skypnet.Modules.About;
 using Skypnet.Modules.Dice;
 using Skypnet.Modules.Help;
 using Skypnet.Modules.Weather;
+using Skypnet.Modules.Weather.Wunderground;
 
 namespace Skypnet.UI.Cli
 {
@@ -22,8 +23,8 @@ namespace Skypnet.UI.Cli
                 kernel.Bind<IModule>().To<HelpModule>();
                 kernel.Bind<IModule>().To<WeatherModule>();
                 kernel.Bind<SkypeContainer>().ToSelf().InSingletonScope();
-
-
+                kernel.Bind<IWeatherProvider>().To<WundergroundWeatherProvider>().WithPropertyValue("ApiKey", "3ffac173009f680a");
+                
                 using (var shutdownEvent = new ManualResetEventSlim(false))
                 {
                     var bot = kernel.Get<SkypnetBot>();
