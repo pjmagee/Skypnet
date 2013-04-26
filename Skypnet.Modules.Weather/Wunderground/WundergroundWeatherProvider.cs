@@ -36,7 +36,11 @@ namespace Skypnet.Modules.Weather.Wunderground
             string command = match.Groups[1].Value;
             string location = match.Groups[2].Value;
 
-            var restRequest = new RestRequest {Resource = "api/{key}/{resource}/lang:EN/q/{search}.json"};
+            var restRequest = new RestRequest
+                {
+                    Method = Method.GET,
+                    Resource = "api/{key}/{resource}/lang:EN/q/{search}.json"
+                };
 
             switch (command.ToLower())
             {
@@ -58,73 +62,85 @@ namespace Skypnet.Modules.Weather.Wunderground
                     break;
             }
 
-            restRequest.AddUrlSegment("search", location);
+            // hack the search because RestSharp encodes with UrlSegment
+            restRequest.Resource = restRequest.Resource.Replace("{search}", location);
             
-
             var rootObject = Execute<RootObject>(restRequest);
 
-            if (rootObject.response.error != null)
+            if (rootObject != null)
             {
-                return rootObject.response.error.description;
-            }
-
-            if (rootObject.response.results != null)
-            {
-                string response = "Search query ambigious. Possible locations: \n";
-                response += string.Join("; ", rootObject.response.results) + "\n";
-                response += "Usage ~" + command + " zmw:[code]";
-                return response;
-            }
-
-            if (rootObject.response.features.conditions == 1)
-            {
-                var conditions = rootObject.current_observation;
-
-                return string.Format("{0}, {1}, Feels like {2}, Humidity {3}, Winds {4}",
-                                     conditions.observation_location.full,
-                                     conditions.observation_time,
-                                     conditions.feelslike_string,
-                                     conditions.relative_humidity,
-                                     conditions.wind_string);
-
-            }
-
-            if (rootObject.response.features.forecast == 1)
-            {
-                var forecast = rootObject.forecast;
-                var response = new List<string>();
-
-                foreach (var fc in forecast.txt_forecast.forecastday)
+                if (rootObject.response != null)
                 {
-                    string day = string.Format(@"{0}: {1}", fc.title, fc.fcttext_metric);
-
-                    if (fc.title.ToLower().Contains("night"))
+                    // Request error
+                    if (rootObject.response.error != null)
                     {
-                        if (command.Equals("fcn", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            response.Add(day);
-                        }
+                        return rootObject.response.error.description;
                     }
-                    else
+
+                    // Ambigious search
+                    if (rootObject.response.results != null)
                     {
-                        response.Add(day);
+                        string response = "Search query ambigious. Possible locations: \n";
+                        response += string.Join("; ", rootObject.response.results);
+                        response += "Usage !" + command + " zmw:[code]";
+                        return response;
+                    }
+
+                    // Weather conditions
+                    if (rootObject.response.features.conditions == 1)
+                    {
+                        var conditions = rootObject.current_observation;
+
+                        return string.Format("{0}, {1}, Feels like {2}, Humidity {3}, Winds {4}",
+                                             conditions.observation_location.full,
+                                             conditions.observation_time,
+                                             conditions.feelslike_string,
+                                             conditions.relative_humidity,
+                                             conditions.wind_string);
+                    }
+
+                    // Weather forecast
+                    if (rootObject.response.features.forecast == 1)
+                    {
+                        var forecast = rootObject.forecast;
+                        var response = new List<string>();
+
+                        foreach (var fc in forecast.txt_forecast.forecastday)
+                        {
+                            string day = string.Format(@"{0}: {1}", fc.title, fc.fcttext_metric);
+
+                            if (fc.title.ToLower().Contains("night"))
+                            {
+                                if (command.Equals("fcn", StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    response.Add(day);
+                                }
+                            }
+                            else
+                            {
+                                response.Add(day);
+                            }
+                        }
+
+                        return string.Join("\n", response);
+                    }
+                    
+                    // Satellite
+                    if (rootObject.response.features.satellite == 1)
+                    {
+                        return "Satellite has not been implemented yet, sorry dude.";
+                    }
+
+                    // Astronomy
+                    if (rootObject.response.features.astronomy == 1)
+                    {
+                        return "Astronomy has not been implemented yet, sorry dude.";
                     }
                 }
-
-                return string.Join("\n", response);
             }
-
-            if (rootObject.response.features.satellite == 1)
-            {
-                return "Satellite has not been implemented yet, sorry dude.";
-            }
-
-            if (rootObject.response.features.astronomy == 1)
-            {
-                return "Astronomy has not been implemented yet, sorry dude.";
-            }
-
-            return "Invalid Syntax";
+            
+            // If we got this far
+            return "There was an error with the weather request.";
         }
     }
 }
