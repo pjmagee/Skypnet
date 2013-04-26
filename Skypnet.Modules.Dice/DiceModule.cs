@@ -51,7 +51,7 @@ namespace Skypnet.Modules.Dice
 
         private void SkypeOnMessageStatus(ChatMessage pMessage, TChatMessageStatus status)
         {
-            if (status == TChatMessageStatus.cmsReceived)
+            if (status == TChatMessageStatus.cmsSent || status == TChatMessageStatus.cmsReceived)
             {
                 if (pMessage.Body.Equals("!roll"))
                 {

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AbstractApiKeyWeatherProvider.cs" />
     <Compile Include="IWeatherProvider.cs" />
+    <Compile Include="OpenWeatherMap\OpenWeatherMapProvider.cs" />
     <Compile Include="Wunderground\Models\Avewind.cs" />
     <Compile Include="Wunderground\Models\CurrentObservation.cs" />
     <Compile Include="Wunderground\Models\CurrentTime.cs" />

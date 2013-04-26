@@ -37,16 +37,12 @@ namespace Skypnet.Modules.About
 
         private void SkypeOnMessageStatus(ChatMessage pMessage, TChatMessageStatus status)
         {
-            switch(status)
+            if (status == TChatMessageStatus.cmsSent || status == TChatMessageStatus.cmsReceived)
             {
-                case TChatMessageStatus.cmsReceived:
-                case TChatMessageStatus.cmsSent:
-                    {
-                        if (pMessage.Body.Equals("!about"))
-                            pMessage.Chat.SendMessage(pMessage.Sender.FullName + ", this is the skypnet bot.");
-
-                        break;
-                    }
+                if (pMessage.Body.Equals("!about"))
+                {
+                    pMessage.Chat.SendMessage(pMessage.Sender.FullName + ", this is the skypnet bot.");
+                }
             }
         }
     }
