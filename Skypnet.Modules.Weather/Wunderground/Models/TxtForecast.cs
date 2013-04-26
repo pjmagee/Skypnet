@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SpikeLite.Modules.Weather.JsonObjects
+namespace Skypnet.Modules.Weather.Wunderground.Models
 {
     public class TxtForecast
     {

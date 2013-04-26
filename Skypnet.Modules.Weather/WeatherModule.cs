@@ -21,7 +21,7 @@ namespace Skypnet.Modules.Weather
         /// </summary>
         public string Description
         {
-            get { return "Retrieve weather information from Wunderground"; }
+            get { return "Retrieve weather information"; }
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Skypnet.Modules.Weather
         /// </summary>
         public string Instructions
         {
-            get { return "Usage: !w [location] i.e '!w sm5 2ht' or '!w England/London'"; }
+            get { return WeatherProvider.GetCommands(); }
         }
         
         [Inject]

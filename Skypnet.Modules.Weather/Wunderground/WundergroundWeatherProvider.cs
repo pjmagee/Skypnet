@@ -29,6 +29,11 @@ namespace Skypnet.Modules.Weather.Wunderground
             return restResponse.Data;
         }
 
+        public override string GetCommands()
+        {
+            return "Usage: !w [location] i.e '!w sm5 2ht' or '!w England/London'";
+        }
+
         public override string GetWeather(string request)
         {
             Match match = WeatherRegex.Match(request);

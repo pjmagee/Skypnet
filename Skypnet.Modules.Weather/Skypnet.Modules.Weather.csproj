@@ -50,6 +50,16 @@
   <ItemGroup>
     <Compile Include="AbstractApiKeyWeatherProvider.cs" />
     <Compile Include="IWeatherProvider.cs" />
+    <Compile Include="OpenWeatherMap\Models\City.cs" />
+    <Compile Include="OpenWeatherMap\Models\Clouds.cs" />
+    <Compile Include="OpenWeatherMap\Models\List.cs" />
+    <Compile Include="OpenWeatherMap\Models\Main.cs" />
+    <Compile Include="OpenWeatherMap\Models\Coord.cs" />
+    <Compile Include="OpenWeatherMap\Models\Rain.cs" />
+    <Compile Include="OpenWeatherMap\Models\RootObject.cs" />
+    <Compile Include="OpenWeatherMap\Models\Sys.cs" />
+    <Compile Include="OpenWeatherMap\Models\Weather.cs" />
+    <Compile Include="OpenWeatherMap\Models\Wind.cs" />
     <Compile Include="OpenWeatherMap\OpenWeatherMapProvider.cs" />
     <Compile Include="Wunderground\Models\Avewind.cs" />
     <Compile Include="Wunderground\Models\CurrentObservation.cs" />

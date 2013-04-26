@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace SpikeLite.Modules.Weather.JsonObjects
+namespace Skypnet.Modules.Weather.Wunderground.Models
 {
     public class Result
     {

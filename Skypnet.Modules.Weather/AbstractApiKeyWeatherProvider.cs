@@ -4,7 +4,7 @@
     {
         // Inject this
         public string ApiKey { get; set; }
-
+        public abstract string GetCommands();
         public abstract string GetWeather(string request);
     }
 }
