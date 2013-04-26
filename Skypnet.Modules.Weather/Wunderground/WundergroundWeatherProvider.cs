@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using RestSharp;
-using SpikeLite.Modules.Weather.JsonObjects;
+using Skypnet.Modules.Weather.Wunderground.Models;
 
 namespace Skypnet.Modules.Weather.Wunderground
 {

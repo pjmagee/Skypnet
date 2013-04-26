@@ -8,6 +8,7 @@ using Skypnet.Modules.Dice;
 using Skypnet.Modules.Help;
 using Skypnet.Modules.Weather;
 using Skypnet.Modules.Weather.Wunderground;
+using Skypnet.Modules.YouTube;
 
 namespace Skypnet.UI.Cli
 {
@@ -18,12 +19,22 @@ namespace Skypnet.UI.Cli
             try
             {
                 IKernel kernel = new StandardKernel();
+
                 kernel.Bind<IModule>().To<AboutModule>();
                 kernel.Bind<IModule>().To<DiceModule>();
                 kernel.Bind<IModule>().To<HelpModule>();
                 kernel.Bind<IModule>().To<WeatherModule>();
-                kernel.Bind<SkypeContainer>().ToSelf().InSingletonScope();
-                kernel.Bind<IWeatherProvider>().To<WundergroundWeatherProvider>().WithPropertyValue("ApiKey", "3ffac173009f680a");
+                kernel.Bind<IModule>().To<YouTubeModule>();
+
+                kernel.Bind<SkypeContainer>().ToSelf().InSingletonScope(); // One instance of Skype
+
+                // TODO: Read api key from App config
+
+                kernel.Bind<IYouTubeProvider>().To<YouTubeProvider>()
+                    .WithPropertyValue("ApiKey", "AIzaSyC3diVUpQjg2niWpu84Be5hByOkg2-MsuU");
+
+                kernel.Bind<IWeatherProvider>().To<WundergroundWeatherProvider>()
+                    .WithPropertyValue("ApiKey", "3ffac173009f680a");
                 
                 using (var shutdownEvent = new ManualResetEventSlim(false))
                 {

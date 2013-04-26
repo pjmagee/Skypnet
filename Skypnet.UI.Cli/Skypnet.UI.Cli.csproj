@@ -114,6 +114,10 @@
       <Project>{E1C07075-3C76-4DED-8D36-468DB9E73C2C}</Project>
       <Name>Skypnet.Modules.Weather</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Skypnet.Modules.YouTube\Skypnet.Modules.YouTube.csproj">
+      <Project>{CEA3F0C2-66ED-4626-A50C-5C2781B95DF3}</Project>
+      <Name>Skypnet.Modules.YouTube</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="SKYPE4COMLib">
