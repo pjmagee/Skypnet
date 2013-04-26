@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vendor", "Vendor", "{505C1A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.YouTube", "Skypnet.Modules.YouTube\Skypnet.Modules.YouTube.csproj", "{CEA3F0C2-66ED-4626-A50C-5C2781B95DF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.UrlShortener", "Skypnet.Modules.UrlShortener\Skypnet.Modules.UrlShortener.csproj", "{D859048E-817D-458A-A3B1-06F32332A84F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{CEA3F0C2-66ED-4626-A50C-5C2781B95DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEA3F0C2-66ED-4626-A50C-5C2781B95DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEA3F0C2-66ED-4626-A50C-5C2781B95DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D859048E-817D-458A-A3B1-06F32332A84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D859048E-817D-458A-A3B1-06F32332A84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D859048E-817D-458A-A3B1-06F32332A84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D859048E-817D-458A-A3B1-06F32332A84F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

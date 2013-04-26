@@ -110,6 +110,10 @@
       <Project>{43A8E0C5-E3C0-4EE5-8FB2-913DB73A7215}</Project>
       <Name>Skypnet.Modules.Help</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Skypnet.Modules.UrlShortener\Skypnet.Modules.UrlShortener.csproj">
+      <Project>{D859048E-817D-458A-A3B1-06F32332A84F}</Project>
+      <Name>Skypnet.Modules.UrlShortener</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Skypnet.Modules.Weather\Skypnet.Modules.Weather.csproj">
       <Project>{E1C07075-3C76-4DED-8D36-468DB9E73C2C}</Project>
       <Name>Skypnet.Modules.Weather</Name>

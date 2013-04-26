@@ -2,10 +2,10 @@
 {
     public class Statistics
     {
-        public string ViewCount { get; set; }
-        public string LikeCount { get; set; }
-        public string DislikeCount { get; set; }
-        public string FavoriteCount { get; set; }
-        public string CommentCount { get; set; }
+        public int ViewCount { get; set; }
+        public int LikeCount { get; set; }
+        public int DislikeCount { get; set; }
+        public int FavoriteCount { get; set; }
+        public int CommentCount { get; set; }
     }
 }

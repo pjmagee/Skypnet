@@ -41,7 +41,7 @@ namespace Skypnet.Modules.YouTube
 
             if (response != null)
             {
-                return response.Snippet.Title + " [Views: " + response.Statistics.ViewCount + "]";
+                return response.Snippet.Title + " [Views: " + response.Statistics.ViewCount.ToString("#,##0") + ")";
             }
 
             return "No result was found for video id" + id;
