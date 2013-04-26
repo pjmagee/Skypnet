@@ -1,0 +1,65 @@
+﻿using System.Text.RegularExpressions;
+using Ninject;
+using SKYPE4COMLib;
+using Skypnet.Client;
+using Skypnet.Core;
+
+namespace Skypnet.Modules.Weather
+{
+    public class WeatherModule : IModule
+    {
+        /// <summary>
+        /// Gets or Sets the name of the module.
+        /// </summary>
+        public string Name
+        {
+            get { return "Weather"; }
+        }
+        
+        /// <summary>
+        /// Gets or Sets the description of the module.
+        /// </summary>
+        public string Description
+        {
+            get { return "Retrieve weather information from Wunderground"; }
+        }
+
+        /// <summary>
+        /// Gets or Sets the usage instructions of the module.
+        /// </summary>
+        public string Instructions
+        {
+            get { return "Usage: !w [location] i.e '!w sm5 2ht' or '!w England/London'"; }
+        }
+        
+        [Inject]
+        public SkypeContainer SkypeContainer { get; set; }
+
+        private const string RegexPattern = @"^!(w|fc)\s+(.*)";
+
+        private static readonly Regex WeatherRegex = new Regex(RegexPattern, RegexOptions.Compiled);
+
+        public void RegisterEventHandlers()
+        {
+            SkypeContainer.Skype.MessageStatus += SkypeOnMessageStatus;
+        }
+
+        private void SkypeOnMessageStatus(ChatMessage pMessage, TChatMessageStatus status)
+        {
+            if (status == TChatMessageStatus.cmsSent)
+            {
+                Match match = WeatherRegex.Match(pMessage.Body);
+                
+                if (match.Success)
+                {
+                    string command = match.Groups[1].Value;
+                    string location = match.Groups[2].Value;
+
+                    // TODO: Implement the weather service
+                }
+            }
+        }
+    }
+
+    
+}
