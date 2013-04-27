@@ -11,7 +11,14 @@ namespace Skypnet.Core
     public class SkypnetBot
     {      
         public event EventHandler<BotStatusChangedEventArgs> BotStatusChanged;
+        
+        /// <summary>
+        /// Defaults to Stopped Status
+        /// </summary>
         private BotStatus botStatus = BotStatus.Stopped;
+
+
+        private readonly ModuleManager moduleManager;
 
         public BotStatus BotStatus
         {
@@ -22,21 +29,30 @@ namespace Skypnet.Core
                 botStatus = value;
             }
         }
-        
+
         [Inject]
-        public ModuleManager Manager { get; set; }
+        public SkypnetBot(ModuleManager moduleManager)
+        {
+            if(moduleManager == null)
+                throw new ArgumentNullException("moduleManager");
+
+            this.moduleManager = moduleManager;
+        }
+
+        public ModuleManager Manager { get { return moduleManager; } }
 
         public void Start()
         {
             if (BotStatus != BotStatus.Stopped)
             {
-                throw new Exception(string.Format("Current Status is : '{0}'. To start the bot the BotStatus must be 'Stopped'.", BotStatus));
+                throw new Exception(string.Format("Current BotStatus is : '{0}'. To start the bot the BotStatus must be 'Stopped'.", BotStatus));
             }
             
             BotStatus = BotStatus.Starting;
 
             // Register all the modules associated with this Manager
-            Manager.RegisterModules();
+            //Manager.RegisterModules();
+            moduleManager.RegisterModules();
 
             BotStatus = BotStatus.Started;
         }

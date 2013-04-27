@@ -54,8 +54,8 @@
   <ItemGroup>
     <Compile Include="BotStatus.cs" />
     <Compile Include="BotStatusChangedEventArgs.cs" />
-    <Compile Include="IModule.cs" />
-    <Compile Include="ModuleBase.cs" />
+    <Compile Include="ISkypnetModule.cs" />
+    <Compile Include="AbstractSkypnetModule.cs" />
     <Compile Include="ModuleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkypnetBot.cs" />

@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Threading;
 using Ninject;
-using Skypnet.Client;
+using Ninject.Modules;
+using Skypnet.Client.Module;
 using Skypnet.Core;
-using Skypnet.Modules.About;
-using Skypnet.Modules.Dice;
-using Skypnet.Modules.Help;
-using Skypnet.Modules.UrlShortener;
-using Skypnet.Modules.UrlShortener.GoogleShortener.Models;
-using Skypnet.Modules.Weather;
-using Skypnet.Modules.Weather.Wunderground;
-using Skypnet.Modules.YouTube;
+using Skypnet.Modules.About.Module;
+using Skypnet.Modules.Ascii.Module;
+using Skypnet.Modules.Dice.Module;
+using Skypnet.Modules.Help.Module;
+using Skypnet.Modules.UrlShortener.Module;
+using Skypnet.Modules.Weather.Module;
+using Skypnet.Modules.YouTube.Module;
 
 namespace Skypnet.UI.Cli
 {
-    internal class ConsoleRunner
+    public class Program
     {
         public static void Main()
         {
@@ -22,25 +22,19 @@ namespace Skypnet.UI.Cli
             {
                 IKernel kernel = new StandardKernel();
 
-                kernel.Bind<IModule>().To<AboutModule>();
-                kernel.Bind<IModule>().To<DiceModule>();
-                kernel.Bind<IModule>().To<HelpModule>();
-                kernel.Bind<IModule>().To<WeatherModule>();
-                kernel.Bind<IModule>().To<YouTubeModule>();
-                kernel.Bind<IModule>().To<UrlShortenerModule>();
+                var modules = new INinjectModule[]
+                    {
+                        new SkypeModule(),
+                        new AboutModule(),
+                        new AsciiModule(),
+                        new DiceModule(),
+                        new HelpModule(),
+                        new UrlShortenerModule(),
+                        new YouTubeModule(),
+                        new WeatherModule(),
+                    };
 
-                kernel.Bind<SkypeContainer>().ToSelf().InSingletonScope(); // One instance of Skype
-
-                // TODO: Read api key from App config
-
-                kernel.Bind<IYouTubeProvider>().To<YouTubeProvider>()
-                    .WithPropertyValue("ApiKey", "AIzaSyC3diVUpQjg2niWpu84Be5hByOkg2-MsuU");
-
-                kernel.Bind<IUrlShortenerProvider>().To<UrlShortenerProvider>()
-                      .WithPropertyValue("ApiKey", "AIzaSyC3diVUpQjg2niWpu84Be5hByOkg2-MsuU");
-
-                kernel.Bind<IWeatherProvider>().To<WundergroundWeatherProvider>()
-                    .WithPropertyValue("ApiKey", "3ffac173009f680a");
+                kernel.Load(modules);
                 
                 using (var shutdownEvent = new ManualResetEventSlim(false))
                 {

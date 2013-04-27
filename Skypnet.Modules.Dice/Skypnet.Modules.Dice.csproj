@@ -44,10 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiceModule.cs" />
+    <Compile Include="Module\DiceModule.cs" />
+    <Compile Include="DiceSkypnetModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Skypnet.Common\Skypnet.Common.csproj">
+      <Project>{0a168e87-6276-48ce-b667-7171933b3ece}</Project>
+      <Name>Skypnet.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Skypnet.Core\Skypnet.Core.csproj">
       <Project>{CA17BE51-8A76-4CC8-B63A-F9CDEC5A5E09}</Project>
       <Name>Skypnet.Core</Name>

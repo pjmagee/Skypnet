@@ -102,6 +102,10 @@
       <Project>{DE2F89D7-4931-4A5B-9709-9D682CECC0B4}</Project>
       <Name>Skypnet.Modules.About</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Skypnet.Modules.Ascii\Skypnet.Modules.Ascii.csproj">
+      <Project>{7388DC7F-6C91-442F-B806-498280ECDE33}</Project>
+      <Name>Skypnet.Modules.Ascii</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Skypnet.Modules.Dice\Skypnet.Modules.Dice.csproj">
       <Project>{BAA8FFC1-66CB-4BB6-885D-A9ADDFAF043C}</Project>
       <Name>Skypnet.Modules.Dice</Name>

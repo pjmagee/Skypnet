@@ -8,7 +8,7 @@ namespace Skypnet.Core
     public class ModuleManager
     {
         [Inject]
-        public IEnumerable<IModule> Modules { get; set; } 
+        public IEnumerable<ISkypnetModule> Modules { get; set; }
 
         public void RegisterModules()
         {

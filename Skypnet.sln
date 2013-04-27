@@ -35,6 +35,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.YouTube", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.UrlShortener", "Skypnet.Modules.UrlShortener\Skypnet.Modules.UrlShortener.csproj", "{D859048E-817D-458A-A3B1-06F32332A84F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.Ascii", "Skypnet.Modules.Ascii\Skypnet.Modules.Ascii.csproj", "{7388DC7F-6C91-442F-B806-498280ECDE33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.Mailer", "Skypnet.Modules.Mailer\Skypnet.Modules.Mailer.csproj", "{F1E2AA5D-1F20-4832-869F-D94D4EC39B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Common", "Skypnet.Common\Skypnet.Common.csproj", "{0A168E87-6276-48CE-B667-7171933B3ECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.UrlShortener.Tests", "Skypnet.Modules.UrlShortener.Tests\Skypnet.Modules.UrlShortener.Tests.csproj", "{82650F19-8822-4016-A3A1-5859097CBB99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.Search", "Skypnet.Modules.Search\Skypnet.Modules.Search.csproj", "{FD82C7D5-370E-4D03-B818-1B9D8D48A644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skypnet.Modules.YouTube.Tests", "Skypnet.Modules.YouTube.Tests\Skypnet.Modules.YouTube.Tests.csproj", "{D8FCC9F1-0210-4C10-9A04-6B05569CCED8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +93,30 @@ Global
 		{D859048E-817D-458A-A3B1-06F32332A84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D859048E-817D-458A-A3B1-06F32332A84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D859048E-817D-458A-A3B1-06F32332A84F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7388DC7F-6C91-442F-B806-498280ECDE33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7388DC7F-6C91-442F-B806-498280ECDE33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7388DC7F-6C91-442F-B806-498280ECDE33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7388DC7F-6C91-442F-B806-498280ECDE33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1E2AA5D-1F20-4832-869F-D94D4EC39B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1E2AA5D-1F20-4832-869F-D94D4EC39B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1E2AA5D-1F20-4832-869F-D94D4EC39B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1E2AA5D-1F20-4832-869F-D94D4EC39B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A168E87-6276-48CE-B667-7171933B3ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A168E87-6276-48CE-B667-7171933B3ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A168E87-6276-48CE-B667-7171933B3ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A168E87-6276-48CE-B667-7171933B3ECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82650F19-8822-4016-A3A1-5859097CBB99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82650F19-8822-4016-A3A1-5859097CBB99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82650F19-8822-4016-A3A1-5859097CBB99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82650F19-8822-4016-A3A1-5859097CBB99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD82C7D5-370E-4D03-B818-1B9D8D48A644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD82C7D5-370E-4D03-B818-1B9D8D48A644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD82C7D5-370E-4D03-B818-1B9D8D48A644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD82C7D5-370E-4D03-B818-1B9D8D48A644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8FCC9F1-0210-4C10-9A04-6B05569CCED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8FCC9F1-0210-4C10-9A04-6B05569CCED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8FCC9F1-0210-4C10-9A04-6B05569CCED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8FCC9F1-0210-4C10-9A04-6B05569CCED8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
