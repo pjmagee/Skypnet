@@ -26,11 +26,11 @@ namespace Skypnet.UI.Cli
                     {
                         new SkypeModule(),
                         new AboutModule(),
+                        new YouTubeModule(),
                         new AsciiModule(),
                         new DiceModule(),
                         new HelpModule(),
                         new UrlShortenerModule(),
-                        new YouTubeModule(),
                         new WeatherModule(),
                     };
 

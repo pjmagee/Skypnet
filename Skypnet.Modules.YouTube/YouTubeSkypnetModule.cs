@@ -16,7 +16,7 @@ namespace Skypnet.Modules.YouTube
         private readonly IYouTubeProvider youTubeProvider;
 
         [Inject]
-        public YouTubeSkypnetModule(YouTubeProvider youTubeProvider)
+        public YouTubeSkypnetModule(IYouTubeProvider youTubeProvider)
         {
             if(youTubeProvider == null)
                 throw new ArgumentNullException("youTubeProvider");

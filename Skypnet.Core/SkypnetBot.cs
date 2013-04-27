@@ -17,7 +17,6 @@ namespace Skypnet.Core
         /// </summary>
         private BotStatus botStatus = BotStatus.Stopped;
 
-
         private readonly ModuleManager moduleManager;
 
         public BotStatus BotStatus
@@ -49,11 +48,7 @@ namespace Skypnet.Core
             }
             
             BotStatus = BotStatus.Starting;
-
-            // Register all the modules associated with this Manager
-            //Manager.RegisterModules();
             moduleManager.RegisterModules();
-
             BotStatus = BotStatus.Started;
         }
 
