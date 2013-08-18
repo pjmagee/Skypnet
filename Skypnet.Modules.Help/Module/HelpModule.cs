@@ -1,10 +1,25 @@
-﻿using Ninject.Modules;
-using Skypnet.Core;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HelpModule.cs" company="Patrick Magee">
+//   Copyright © 2013
+// </copyright>
+// <summary>
+//   The help module.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Skypnet.Modules.Help.Module
 {
+    using Ninject.Modules;
+    using Skypnet.Core;
+
+    /// <summary>
+    /// The help module.
+    /// </summary>
     public class HelpModule : NinjectModule
     {
+        /// <summary>
+        /// Loads any bindings configured into the Ninject Kernel.
+        /// </summary>
         public override void Load()
         {
             Bind<ISkypnetModule>()

@@ -1,4 +1,11 @@
-﻿using System.Collections.Generic;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ISkypnetModule.cs" company="Patrick Magee">
+//   Copyright © 2013
+// </copyright>
+// <summary>
+//   A defined module of the skypnet bot engine.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Skypnet.Core
 {
@@ -11,6 +18,7 @@ namespace Skypnet.Core
         /// Gets or Sets the name of the module.
         /// </summary>
         string Name { get; }
+
         /// <summary>
         /// Gets or Sets the description of the module.
         /// </summary>
@@ -27,4 +35,3 @@ namespace Skypnet.Core
         void RegisterEventHandlers();
     }
 }
-

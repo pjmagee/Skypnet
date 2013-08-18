@@ -1,11 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IntegerExtensions.cs" company="Patrick Magee">
+//   Copyright © 2013
+// </copyright>
+// <summary>
+//   The integer extensions.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Skypnet.Common
 {
+    using System;
+
+    /// <summary>
+    /// The integer extensions.
+    /// </summary>
     public static class IntegerExtensions
     {
         /// <summary>
@@ -23,6 +31,15 @@ namespace Skypnet.Common
             }
         }
 
+        /// <summary>
+        /// The times.
+        /// </summary>
+        /// <param name="count">
+        /// The count.
+        /// </param>
+        /// <param name="action">
+        /// The action.
+        /// </param>
         public static void Times(this int count, Action action)
         {
             for (int i = 0; i < count; i++)

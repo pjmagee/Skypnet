@@ -1,21 +1,39 @@
-﻿using System;
-using System.Threading;
-using Ninject;
-using Ninject.Modules;
-using Skypnet.Client.Module;
-using Skypnet.Core;
-using Skypnet.Modules.About.Module;
-using Skypnet.Modules.Ascii.Module;
-using Skypnet.Modules.Dice.Module;
-using Skypnet.Modules.Help.Module;
-using Skypnet.Modules.UrlShortener.Module;
-using Skypnet.Modules.Weather.Module;
-using Skypnet.Modules.YouTube.Module;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Program.cs" company="Patrick Magee">
+//   Copyright © 2013
+// </copyright>
+// <summary>
+//   The main console program.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Skypnet.UI.Cli
 {
+    using System;
+    using System.Threading;
+    using Ninject;
+    using Ninject.Modules;
+    using Skypnet.Client.Module;
+    using Skypnet.Core;
+    using Skypnet.Modules.About.Module;
+    using Skypnet.Modules.Ascii.Module;
+    using Skypnet.Modules.Dice.Module;
+    using Skypnet.Modules.Help.Module;
+    using Skypnet.Modules.UrbanDictionary.Module;
+    using Skypnet.Modules.UrlShortener.Module;
+    using Skypnet.Modules.Weather.Module;
+    using Skypnet.Modules.YouTube.Module;
+
+    /// <summary>
+    /// The program.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// The main entry point. 
+        /// Composition root.
+        /// We setup the Kernel here, prior to anything else.
+        /// </summary>
         public static void Main()
         {
             try
@@ -27,11 +45,12 @@ namespace Skypnet.UI.Cli
                         new SkypeModule(),
                         new AboutModule(),
                         new YouTubeModule(),
-                        new AsciiModule(),
+                        new ASCIIModule(),
                         new DiceModule(),
                         new HelpModule(),
-                        new UrlShortenerModule(),
+                        new UrlShortenModule(),
                         new WeatherModule(),
+                        new UrbanModule()
                     };
 
                 kernel.Load(modules);
@@ -40,26 +59,26 @@ namespace Skypnet.UI.Cli
                 {
                     var bot = kernel.Get<SkypnetBot>();
 
-                    bot.BotStatusChanged += ((sender, args) =>
+                    // Inline event listener.
+                    bot.BotStatusChanged += (sender, args) =>
                     {
                         if (args.NewStatus == BotStatus.Stopped)
                         {
                             shutdownEvent.Set();
                         }
-                    });
+                    };
 
-                    Console.CancelKeyPress += ((sender, args) =>
+                    Console.CancelKeyPress += (sender, args) =>
                     {
                         args.Cancel = true;
                         bot.Stop();
                         shutdownEvent.Set();
-                    });
+                    };
 
                     bot.Start();
                     shutdownEvent.Wait();
                     kernel.Dispose();
                 }
-
             }
             catch (Exception e)
             {
@@ -67,6 +86,5 @@ namespace Skypnet.UI.Cli
                 Console.Read();
             }
         }
-
     }
 }

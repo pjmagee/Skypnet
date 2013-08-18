@@ -51,9 +51,9 @@
   <ItemGroup>
     <Compile Include="Services\GoogleShortener\Models\RootObject.cs" />
     <Compile Include="Services\TinyUrl\TinyUrlProvider.cs" />
-    <Compile Include="Module\UrlShortenerModule.cs" />
-    <Compile Include="UrlShortenerSkypnetModule.cs" />
-    <Compile Include="Services\IUrlShortenerProvider.cs" />
+    <Compile Include="Module\UrlShortenModule.cs" />
+    <Compile Include="UrlShortenSkypnetModule.cs" />
+    <Compile Include="Services\IUrlShortenProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GoogleShortener\GoogleUrlProvider.cs" />
   </ItemGroup>

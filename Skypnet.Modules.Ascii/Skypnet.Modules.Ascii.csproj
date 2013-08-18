@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Module\AsciiModule.cs" />
-    <Compile Include="AsciiSkypnetModule.cs" />
+    <Compile Include="Module\ASCIIModule.cs" />
+    <Compile Include="ASCIISkypnetModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

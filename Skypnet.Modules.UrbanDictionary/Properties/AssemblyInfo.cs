@@ -1,23 +1,15 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="Patrick Magee">
-//   Copyright © 2013
-// </copyright>
-// <summary>
-//   AssemblyInfo.cs
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Reflection;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Skypnet.UI.Cli")]
+[assembly: AssemblyTitle("Skypnet.Modules.UrbanDictionary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Skypnet.UI.Cli")]
+[assembly: AssemblyProduct("Skypnet.Modules.UrbanDictionary")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -28,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9f68dbea-f710-40db-beee-bb579537d269")]
+[assembly: Guid("ba2730f9-3434-4d41-8f03-536d472d0728")]
 
 // Version information for an assembly consists of the following four values:
 //

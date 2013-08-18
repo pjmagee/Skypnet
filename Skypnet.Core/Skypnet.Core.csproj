@@ -79,6 +79,10 @@
       <Project>{669C6EEE-CA85-45AB-AB3B-6E756A712B63}</Project>
       <Name>Skypnet.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Skypnet.Common\Skypnet.Common.csproj">
+      <Project>{0A168E87-6276-48CE-B667-7171933B3ECE}</Project>
+      <Name>Skypnet.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

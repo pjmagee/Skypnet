@@ -1,15 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ninject.Modules;
-using Skypnet.Core;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MailerModule.cs" company="Patrick Magee">
+//   Copyright © 2013
+// </copyright>
+// <summary>
+//   The mailer module.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Skypnet.Modules.Mailer
 {
+    using Ninject.Modules;
+    using Skypnet.Core;
+
+    /// <summary>
+    /// The mailer module.
+    /// </summary>
     public class MailerModule : NinjectModule
     {
+        /// <summary>
+        /// The load.
+        /// </summary>
         public override void Load()
         {
             Bind<ISkypnetModule>()

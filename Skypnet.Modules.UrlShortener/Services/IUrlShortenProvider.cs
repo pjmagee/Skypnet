@@ -1,33 +1,33 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IYouTubeProvider.cs" company="Patrick Magee">
+// <copyright file="IUrlShortenProvider.cs" company="Patrick Magee">
 //   Copyright © 2013
 // </copyright>
 // <summary>
-//   The YouTubeProvider interface.
+//   The UrlShortenerProvider interface.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Skypnet.Modules.YouTube
+namespace Skypnet.Modules.UrlShortener.Services
 {
     /// <summary>
-    /// The YouTubeProvider interface.
+    /// The UrlShortenerProvider interface.
     /// </summary>
-    public interface IYouTubeProvider
+    public interface IUrlShortenProvider
     {
         /// <summary>
-        /// Gets or sets the Api key.
+        /// Gets or sets the API key.
         /// </summary>
         string ApiKey { get; set; }
 
         /// <summary>
-        /// The get video information.
+        /// The shortened url.
         /// </summary>
-        /// <param name="id">
-        /// The id.
+        /// <param name="url">
+        /// The url.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        /// The shortened url as a <see cref="string"/>.
         /// </returns>
-        string GetVideoInformation(string id);
+        string Shorten(string url);
     }
 }

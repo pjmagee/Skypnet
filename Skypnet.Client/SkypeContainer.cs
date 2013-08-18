@@ -1,24 +1,36 @@
-﻿using SKYPE4COMLib;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SkypeContainer.cs" company="Patrick Magee">
+//   Copyright © 2013
+// </copyright>
+// <summary>
+//   The SkypeContainer is passed to all module instances
+//   so that the same Skype interface instance is accessed
+//   to allow modules to register their event handlers
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Skypnet.Client
 {
+    using SKYPE4COMLib;
+
     /// <summary>
-    /// The SkypeContainer is passed to all module instances
-    /// so that the same Skype interface instance is accessed
-    /// to allow modules to register their event handlers 
+    /// The SkypeContainer is passed to all module instances so that the same Skype interface instance is accessed to allow modules to register their event handlers. 
     /// </summary>
     public class SkypeContainer
     {
         /// <summary>
-        /// The Skype Interface COM
-        /// There is only ever one instance.
+        /// Initializes a new instance of the <see cref="SkypeContainer"/> class.
         /// </summary>
-        public Skype Skype { get; set; }
-
         public SkypeContainer()
         {
             Skype = new Skype();
             Skype.Attach(Protocol: 8, Wait: false);
         }
+
+        /// <summary>
+        /// Gets or sets Skype Interface COM.
+        /// There is only ever one instance.
+        /// </summary>
+        public Skype Skype { get; set; }
     }
 }

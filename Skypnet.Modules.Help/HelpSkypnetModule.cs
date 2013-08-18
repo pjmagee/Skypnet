@@ -1,33 +1,71 @@
-﻿using System;
-using System.Linq;
-using Ninject;
-using SKYPE4COMLib;
-using Skypnet.Client;
-using Skypnet.Core;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HelpSkypnetModule.cs" company="Patrick Magee">
+//   Copyright © 2013
+// </copyright>
+// <summary>
+//   Provides information about a given module
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Skypnet.Modules.Help
 {
+    using System;
+    using System.Linq;
+    using SKYPE4COMLib;
+    using Skypnet.Core;
+
     /// <summary>
     /// Provides information about a given module
     /// </summary>
     public class HelpSkypnetModule : AbstractSkypnetModule
     {
+        /// <summary>
+        /// The register event handlers.
+        /// </summary>
         public override void RegisterEventHandlers()
         {
-            SkypeContainer.Skype.MessageStatus += SkypeOnMessageStatus;
+            SkypeContainer.Skype.MessageStatus += this.SkypeOnMessageStatus;
         }
 
-        private void SkypeOnMessageStatus(ChatMessage pMessage, TChatMessageStatus status)
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public override void Dispose()
+        {
+            SkypeContainer.Skype.MessageStatus -= this.SkypeOnMessageStatus;
+        }
+
+        /// <summary>
+        /// The send incorrect syntax response.
+        /// </summary>
+        /// <param name="chatMessage">
+        /// The p message.
+        /// </param>
+        private static void SendIncorrectSyntaxResponse(ChatMessage chatMessage)
+        {
+            chatMessage.Chat.SendMessage("Request was not in the correct syntax.");
+        }
+
+        /// <summary>
+        /// The skype on message status.
+        /// </summary>
+        /// <param name="chatMessage">
+        /// The chat message.
+        /// </param>
+        /// <param name="status">
+        /// The status.
+        /// </param>
+        private void SkypeOnMessageStatus(ChatMessage chatMessage, TChatMessageStatus status)
         {
             if (status == TChatMessageStatus.cmsSent || status == TChatMessageStatus.cmsReceived)
             {
-                string[] messageArray = pMessage.Body.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+                string[] messageArray = chatMessage.Body.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
                 if (messageArray.First().Equals("!help", StringComparison.OrdinalIgnoreCase))
                 {
                     if (messageArray.Length == 1)
                     {
-                        SendModuleListResponse(pMessage);
+                        this.SendModuleListResponse(chatMessage);
                     }
                     else if (messageArray.Length == 2)
                     {
@@ -37,33 +75,43 @@ namespace Skypnet.Modules.Help
                     
                         if (skypnetModule != null)
                         {
-                            SendHelpResponse(pMessage, skypnetModule);
+                            this.SendHelpResponse(chatMessage, skypnetModule);
                         }
                     }
                     else
                     {
-                        SendIncorrectSyntaxResponse(pMessage);
-                        SendModuleListResponse(pMessage);
+                        SendIncorrectSyntaxResponse(chatMessage);
+                        this.SendModuleListResponse(chatMessage);
                     }
                 }
             }
         }
 
-        private void SendIncorrectSyntaxResponse(ChatMessage pMessage)
+        /// <summary>
+        /// The send help response.
+        /// </summary>
+        /// <param name="chatMessage">
+        /// The chatMessage.
+        /// </param>
+        /// <param name="skypnetModule">
+        /// The skypnet module.
+        /// </param>
+        private void SendHelpResponse(ChatMessage chatMessage, ISkypnetModule skypnetModule)
         {
-            pMessage.Chat.SendMessage("Request was not in the correct syntax.");
+            chatMessage.Chat.SendMessage("Module Name: " + skypnetModule.Name);
+            chatMessage.Chat.SendMessage("Module Description: " + skypnetModule.Description);
+            chatMessage.Chat.SendMessage("Module Instructions: " + skypnetModule.Instructions);
         }
 
-        private void SendHelpResponse(ChatMessage pMessage, ISkypnetModule skypnetModule)
+        /// <summary>
+        /// The send module list response.
+        /// </summary>
+        /// <param name="chatMessage">
+        /// The p message.
+        /// </param>
+        private void SendModuleListResponse(ChatMessage chatMessage)
         {
-            pMessage.Chat.SendMessage("Module Name: " + skypnetModule.Name);
-            pMessage.Chat.SendMessage("Module Description: " + skypnetModule.Description);
-            pMessage.Chat.SendMessage("Module Instructions: " + skypnetModule.Instructions);
-        }
-
-        private void SendModuleListResponse(ChatMessage pMessage)
-        {
-            pMessage.Chat.SendMessage("Modules: " + string.Join(", ", ModuleManager.Modules.Select(x => x.Name)));
+            chatMessage.Chat.SendMessage("Modules: " + string.Join(", ", ModuleManager.Modules.Select(x => x.Name)));
         }
     }
 }
